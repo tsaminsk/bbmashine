@@ -41,7 +41,40 @@
             </div>
 
         </div>
-        <div class="sidebarsearchparams__item"></div>
+        <div class="sidebarsearchparams__item">
+            <div class="sidebarsearchparams__item-nav">
+                <p>Производитель</p>
+                <span class="sidebarsearchparams__item-open" :class="{ 'is-open' : changeFabricator }" @click="changeFabricator = !changeFabricator"></span>
+            </div>
+            <div class="sidebarsearchparams__item-main" v-if="changeFabricator">
+                <form action="#">
+                    <p v-for="(item, i) in params.allFabricators" :key="`fabricators-${i}`">
+                        <label>
+                            <input type="checkbox" :value="item" v-model="fabricators">
+                            {{ item }}
+                        </label>
+
+                    </p>
+                </form>
+            </div>
+        </div>
+        <div class="sidebarsearchparams__item">
+            <div class="sidebarsearchparams__item-nav">
+                <p>Страна производства</p>
+                <span class="sidebarsearchparams__item-open" :class="{ 'is-open' : countryOfOrigin }" @click="countryOfOrigin = !countryOfOrigin"></span>
+            </div>
+            <div class="sidebarsearchparams__item-main" v-if="countryOfOrigin">
+                <form action="#">
+                    <p v-for="(item, i) in params.allCuntry" :key="`cuntryes-${i}`">
+                        <label>
+                            <input type="checkbox" :value="item" v-model="cuntryes">
+                            {{ item }}
+                        </label>
+
+                    </p>
+                </form>
+            </div>
+        </div>
 
     </div>
 </template>
@@ -50,6 +83,10 @@
 export default {
     data() {
         return {
+            countryOfOrigin: false,
+            cuntryes: [],
+            changeFabricator: true,
+            fabricators: [],
             provenCompanies: false,
             changePrice: true,
             minPrice: 0,
@@ -58,6 +95,8 @@ export default {
             runnerStartPos: 0,
             runnerEndPos: 0,
             params: {
+                allFabricators: ["Beyerdynamic", "Audio-Technica", "2x3", "Athletic", "Sony"],
+                allCuntry: ["Japan", "USA", "China", "Germany", "Russia"],
                 regions: ["Беларусь"],
                 items: [
                     {name: "", type: "", list: ["", ""]}
@@ -116,7 +155,8 @@ export default {
 
 <style lang="scss">
     .sidebarsearchparams {
-        width: 18%;
+        display: inline-block;
+        width: 300px;
         padding: 0 0 40px;
         border: 1px solid #ccc;
         background-color: #fff;
@@ -143,6 +183,7 @@ export default {
 
         &__item-nav {
             position: relative;
+            margin: 0 0 30px;
         }
 
         &__item-open {
@@ -166,6 +207,16 @@ export default {
 
             form > div {
                 margin: 0 0 30px;
+
+                &:last-child {
+                    margin: 0;
+                }
+            }
+
+            form > p {
+                display: block;
+                font-size: 14px;
+                font-weight: 400;
             }
 
             input {
