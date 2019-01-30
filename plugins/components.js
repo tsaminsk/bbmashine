@@ -12,6 +12,9 @@ Vue.component('Footer', Footer);
 import Header from '@/components/Header';
 Vue.component('Header', Header);
 
+import ShowMore from '@/components/ShowMore';
+Vue.component('ShowMore', ShowMore);
+
 import SidebarSearchParams from '@/components/SidebarSearchParams';
 Vue.component('SidebarSearchParams', SidebarSearchParams);
 

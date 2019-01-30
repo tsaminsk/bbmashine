@@ -7,7 +7,7 @@
 
         </div>
         <div class="card__price">
-            <span v-html="params.price"></span>
+            <span v-html="params.price.toFixed(2)"></span>
             руб.
         </div>
         <div class="card__instock">
@@ -83,6 +83,10 @@ export default {
             padding: 0 15px 7px;
             font-size: 18px;
             font-weight: 500;
+        }
+
+        &__description {
+            height: 90px;
         }
 
         &__price span {
