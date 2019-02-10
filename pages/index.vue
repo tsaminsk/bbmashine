@@ -9,6 +9,8 @@
                 Nuxt.js project
             </h2>
             <div class="home__links">
+                Ссылка на тестовое задание тут:
+                <br>
                 <nuxt-link to="/tovary">Test page</nuxt-link>
             </div>
         </div>
